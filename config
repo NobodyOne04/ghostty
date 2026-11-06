@@ -1,0 +1,94 @@
+# archminimal · Ghostty (macOS)
+# Same palette as the Hyprland bar, launcher, login screen and nvim panels.
+# Note: a "#" mid-value is part of the value, so colors stay inline.
+
+# ---- font ----
+# JetBrains Mono + Nerd Font symbols are built into Ghostty
+font-family = JetBrains Mono
+font-size = 14
+# no ligatures: what you type is what you see
+font-feature = -calt
+font-feature = -liga
+# slightly bolder strokes on Retina
+font-thicken = true
+font-thicken-strength = 80
+adjust-cell-height = 10%
+
+# ---- colors ----
+background = #18191d
+foreground = #d0d2d0
+cursor-color = #00e5ff
+cursor-text = #18191d
+selection-background = #00e5ff
+selection-foreground = #000000
+split-divider-color = #3a3c44
+unfocused-split-opacity = 0.85
+minimum-contrast = 1.1
+
+palette = 0=#28292d
+palette = 1=#ff2a6d
+palette = 2=#9ece6a
+palette = 3=#e0af68
+palette = 4=#5ab0f6
+palette = 5=#b48ef7
+palette = 6=#00e5ff
+palette = 7=#d0d2d0
+palette = 8=#4a4c54
+palette = 9=#ff5c8a
+palette = 10=#b5e08a
+palette = 11=#f0c88a
+palette = 12=#8ccaff
+palette = 13=#cdb1ff
+palette = 14=#7af2ff
+palette = 15=#f2f3f2
+
+background-opacity = 0.88
+background-blur = 30
+
+# ---- window ----
+macos-titlebar-style = tabs
+window-padding-x = 14
+window-padding-y = 12
+window-padding-balance = true
+window-padding-color = extend
+window-save-state = always
+window-inherit-working-directory = true
+resize-overlay = never
+confirm-close-surface = false
+macos-icon = xray
+
+# ---- shell ----
+shell-integration = zsh
+# block cursor everywhere; sudo keeps terminfo; ssh-* fixes remote hosts
+# that lack xterm-ghostty (replaces the old term = xterm-256color hack)
+shell-integration-features = no-cursor,sudo,title,ssh-env,ssh-terminfo
+scrollback-limit = 100000000
+
+# ---- cursor & input ----
+cursor-style = block
+cursor-style-blink = true
+mouse-hide-while-typing = true
+copy-on-select = clipboard
+# Option works as Alt in zsh/nvim (left only: right Option still types symbols)
+macos-option-as-alt = left
+# ping when a long command finishes in a background window
+notify-on-command-finish = unfocused
+notify-on-command-finish-after = 10s
+
+# ---- quick terminal: drop-down from anywhere ----
+quick-terminal-position = top
+quick-terminal-animation-duration = 0.15
+keybind = global:ctrl+grave_accent=toggle_quick_terminal
+
+# ---- keys (cmd+t tabs, cmd+d / cmd+shift+d splits are built in) ----
+keybind = cmd+shift+enter=toggle_split_zoom
+keybind = cmd+alt+h=goto_split:left
+keybind = cmd+alt+j=goto_split:down
+keybind = cmd+alt+k=goto_split:up
+keybind = cmd+alt+l=goto_split:right
+keybind = cmd+ctrl+h=resize_split:left,20
+keybind = cmd+ctrl+j=resize_split:down,20
+keybind = cmd+ctrl+k=resize_split:up,20
+keybind = cmd+ctrl+l=resize_split:right,20
+keybind = cmd+ctrl+equal=equalize_splits
+keybind = shift+enter=text:\x1b\r
