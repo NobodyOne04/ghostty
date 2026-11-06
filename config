@@ -42,7 +42,7 @@ palette = 13=#cdb1ff
 palette = 14=#7af2ff
 palette = 15=#f2f3f2
 
-background-opacity = 0.88
+background-opacity = 0.5
 background-blur = 30
 
 # ---- window ----
