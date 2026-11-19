@@ -1,0 +1,23 @@
+# 0002. Archminimal look: shared palette, translucent background, no ligatures
+
+- Status: Accepted
+- Date: 2026-11-19
+
+The terminal uses the same palette as the rest of the archminimal setup and a translucent,
+blurred background, so it looks like one desktop with tmux and nvim inside it.
+
+## Technical details
+- **Palette**: background `#18191d`, foreground `#d0d2d0`, accent cyan `#00e5ff` (cursor,
+  selection), ANSI 0-15 from the archminimal palette (red `#ff2a6d`, green `#9ece6a`, yellow
+  `#e0af68`, blue `#5ab0f6`, purple `#b48ef7`, cyan `#00e5ff`, plus brighter variants). The
+  same values are in the tmux `conf/theme.conf` header and the nvim theme.
+- **Background**: `background-opacity = 0.5`, `background-blur = 30`; tmux and nvim draw with
+  `bg=default`, so the blur shows through them.
+- **Font**: JetBrains Mono 14 with `-calt` / `-liga` (what you type is what you see),
+  `font-thicken` for Retina, `adjust-cell-height = 10%`.
+- **Inline colours**: values keep `#` inline; a `#` mid-value is part of the value.
+
+## Technologies and alternatives
+- Involved: Ghostty (macOS), JetBrains Mono (bundled).
+- Alternatives: a built-in Ghostty theme (doesn't match the desktop); opaque background
+  (loses the desktop look); ligatures on (operators change shape while typing).

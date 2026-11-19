@@ -1,0 +1,24 @@
+# 0003. Keys: left Option is Alt, cmd-based splits, quick terminal, zsh integration
+
+- Status: Accepted
+- Date: 2026-11-19
+
+Ghostty's own keys use `cmd`, so every Alt combination is left free for zsh, tmux and nvim,
+and the shell integration makes ssh and prompts behave.
+
+## Technical details
+- **Alt**: `macos-option-as-alt = left`; the right Option still types symbols. tmux's
+  no-prefix `Alt-…` keys and nvim's smart-splits depend on it.
+- **Splits**: `cmd+alt+h/j/k/l` move, `cmd+ctrl+h/j/k/l` resize by 20, `cmd+ctrl+=`
+  equalizes, `cmd+shift+enter` zooms; tabs and splits themselves are Ghostty defaults.
+- **Quick terminal**: `global:ctrl+grave_accent` toggles a drop-down terminal at the top
+  (0.15 s animation); needs macOS accessibility permission for the global key.
+- **shift+enter** sends `ESC CR`, which TUIs such as Claude Code read as a newline.
+- **Shell integration**: `zsh`, features `no-cursor,sudo,title,ssh-env,ssh-terminfo`: the
+  block cursor stays, `sudo` keeps terminfo, and ssh hosts without `xterm-ghostty` get a
+  working terminal (replaces an old `term = xterm-256color` hack).
+- **Notifications**: `notify-on-command-finish = unfocused` after 10 s.
+
+## Technologies and alternatives
+- Alternatives: both Options as Alt (loses typing symbols); Alt-based split keys (clash with
+  tmux); `term = xterm-256color` (loses Ghostty features locally).
